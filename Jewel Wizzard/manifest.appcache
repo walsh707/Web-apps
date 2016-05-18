@@ -1,0 +1,41 @@
+CACHE MANIFEST
+# Jewel Warrior cache manifest, rev 17
+js/audio.js
+js/board-worker.js
+js/board-worker-interface.js
+js/display.canvas.js
+js/dom.js
+js/game.js
+js/input.js
+js/matchThree.board.js
+js/matchThree.js
+js/screen.game.js
+js/screen.high-scores.js
+js/screen.main-menu.js
+js/screen.splash.js
+js/screen.splash-install.js
+js/storage.js
+
+images/jewels32.png
+images/jewels40.png
+images/jewels64.png
+images/jewels80.png
+images/install-icon.png
+
+fonts/vermin_vibes_1989.eot
+fonts/vermin_vibes_1989.svg
+fonts/vermin_vibes_1989.ttf
+fonts/vermin_vibes_1989.woff
+
+css/style.css
+css/mobile.css
+css/animate.css
+*
+
+NETWORK:
+# allow online access only to this file
+counter.php
+*
+
+FALLBACK:
+/ /offline.html

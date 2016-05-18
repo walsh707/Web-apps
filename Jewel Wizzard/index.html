@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en-US" manifest="manifest.appcache">
+<head>
+	<meta charset="UTF-8">
+	<title>Jewel Wizzard</title>
+
+	<!-- Viewports -->
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="apple-touch-icon-precomposed" href="images/ios-icon.png"/>
+
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<link rel="apple-touch-startup-image" href="images/ios-startup.png" media="screen and (min-device-width: 320px) and (orientation:portrait)" />
+		<!-- TODO add landscape -->
+
+	<!-- Stylesheets -->
+	<link href='https://fonts.googleapis.com/css?family=Caveat+Brush' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="styles/mobile.css" 
+          media="screen and (max-device-width: 320px) and (orientation: portrait),
+                 screen and (max-device-width: 568px) and (orientation: landscape)"/>
+
+	<!-- Javascript -->
+	<script src="js/matchThree.js"></script>
+	<script>
+	window.addEventListener("load", function() {
+		matchThree.load("js/dom.js");
+		if (matchThree.isStandalone()) {
+			matchThree.load("js/screen.splash.js", matchThree.setup);
+			matchThree.load("js/screen.main-menu.js");
+			if (matchThree.hasWebWorkers()) {
+				matchThree.preload("js/board.worker.js");
+				matchThree.load("js/board.worker-interface.js");
+			} else {
+				matchThree.load("js/matchThree.board.js");
+			}
+			matchThree.load("js/screen.game.js");
+			matchThree.load("js/screen.high-scores.js");
+			matchThree.load("js/screen.about.js");
+			matchThree.load("js/display.canvas.js");
+			matchThree.load("js/input.js");
+			matchThree.load("js/audio.js");
+			matchThree.load("js/storage.js")
+		}
+		else {
+			matchThree.load("js/screen.splash-install.js", matchThree.setup);
+		}
+	});
+	</script>
+</head>
+
+<body>
+	<div id="game">
+		<div class="screen" id="screen-splash">
+			<h1 class="logo">Jewel<br>Wizzard</h1>
+			<div class="progress">
+				<div class="indicator"></div>
+			</div>
+			<br>
+			<img src="images/bm.gif" alt="Black Mage">
+			<span class="continue">Click to Continue</span>
+		</div>
+
+		<div class="screen" id="main-menu">
+			<h1 class="logo">Jewel<br>Wizzard</h1>
+			<ul class="menu">
+				<li> <button name="game-screen">Play</button> </li>
+				<li> <button name="about">About</button> </li>
+				<li> <button name="high-scores">Leaderboard</button> </li>
+				<li> <button name="exit-screen">Exit</button> </li>
+			</ul>
+		</div>
+
+		<div class="screen" id="install-screen">
+			<h1 class="logo">Jewel<br>Wizzard</h1>
+			<span>Click the <img src="images/install-icon.png" alt="Install icon"> button to install the game to your home screen.</span>
+		</div>
+
+		<div class="screen" id="game-screen">
+			<div class="game-board">
+				<div class="announcement"></div>
+			</div>
+
+			<div class="game-info">
+				<label class="level">Level: <span></span></label>
+				<label class="score">Score: <span></span></label>
+			</div>
+
+			<div class="time progress"><div class="indicator"></div></div>
+
+			<footer>
+				<button class="exit">Exit</button>
+				<button class="pause">Pause</button>
+			</footer>
+
+			<div class="pause-overlay">
+				<div class="pause-text">Pause</div>
+			</div>
+		</div>
+
+		<div class="screen" id="about">
+			<h2 class="logo">About</h2>
+			<p> Jewel Wizzard is a game about matching 3 of the same icons. <br> 
+			<br>Match three in a row and score points. Keep playing and beat your high score!</p>
+			<footer>
+				<button class="back">Back</button>
+			</footer>
+		</div>
+
+		<div class="screen" id="high-scores">
+			<h2 class="logo">High Scores</h2>
+			<ol class="score-list">
+			</ol>
+			<footer>
+				<button class="back">Back</button>
+			</footer>
+		</div>
+	</div>
+</body>
+</html>
